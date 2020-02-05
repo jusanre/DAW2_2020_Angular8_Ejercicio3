@@ -1,0 +1,18 @@
+<h2>Componente gato</h2>
+<hr>
+<h3>Listado de gatos</h3>
+<table>
+    <tr><th>Nº</th><th>Nombre</th><th>Raza</th><th>Edad</th></tr>
+    <tr *ngFor="let gatito of arrayGatos; index as i">
+        <td>{{i + 1}}</td>
+        <td>{{gatito.nombre}}</td>
+        <td>{{gatito.raza}}</td>
+        <td *ngIf="gatito.edad != -1">{{gatito.edad}}</td>
+        <td *ngIf="gatito.edad == -1"></td>
+        <td><button (click)="delGato(i)">Eliminar</button></td>
+    </tr>
+</table>
+
+<app-gato-nuevo (mensajeDelHijo)="addGatoOutput($event)"></app-gato-nuevo>
+
+<app-gato-mensajes [mensaje]="mensajePadre"></app-gato-mensajes>

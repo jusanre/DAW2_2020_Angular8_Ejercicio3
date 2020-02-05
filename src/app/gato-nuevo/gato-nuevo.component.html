@@ -1,0 +1,16 @@
+<h2>Componente gato-nuevo</h2>
+<hr>
+<h3>Nuevo gato</h3>
+<form [formGroup]="gatoForm" (ngSubmit)="formSubmit()">
+    Nombre <input formControlName="nombre">
+    Raza <input formControlName="raza">
+    Edad <input formControlName="edad">
+    <div *ngIf="nombre.touched && nombre.hasError('required')" class="error">
+        El nombre es requerido
+    </div>
+    <div *ngIf="edad.touched && (edad.hasError('min') || edad.hasError('max'))" class="error">
+        La edad debe estar entre -1 y 25
+    </div>
+    <br>
+    <button type="submit" [disabled]="gatoForm.invalid">Añadir gato</button>
+</form>
